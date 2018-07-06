@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { Redirect, Route, Switch } from "react-router-dom";
+
 import './App.css';
+
 import NavBar from './NavBar';
 import { Home } from './Home';
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Session } from './Session';
 
 class App extends Component {
   render() {
@@ -11,6 +14,7 @@ class App extends Component {
         <NavBar />
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/session/:id" component={Session} />
           <Redirect to="/" />
         </Switch>
       </div>
