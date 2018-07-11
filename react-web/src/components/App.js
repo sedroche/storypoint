@@ -12,25 +12,21 @@ class App extends Component {
     super(props);
 
     this.state = {
-      redirectToSession: false
+      sessionId: null
     }
   }
 
   onSessionId = sessionDetails => {
-    this.setState(sessionDetails);
     window.localStorage.setItem("userName", sessionDetails.userName);
+    this.setState(sessionDetails);
   };
-
-  // sessionStarted = () => {
-  //   this.setState({redirectToSession: false});
-  // };
 
   render() {
     return (
       <div className="App">
         <NavBar />
         <Switch>
-          {this.state.sessionId && <Redirect to={`/session/${this.state.sessionId}`} />}
+          {this.state.sessionId && <Redirect exact from='/' push to={`/session/${this.state.sessionId}`} />}
           <Route exact path="/" render={() => <CreateSession onSessionId={this.onSessionId} />} />
           <Route exact path="/session/:id" component={Session} />
           <Redirect to="/" />
