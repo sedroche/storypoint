@@ -10,7 +10,7 @@ export class UsernameForm extends React.Component {
     }
   }
 
-  handleInputChange = (event) => {
+  handleInputChange = event => {
     if (this.state.pristine) {
       this.setState({pristine: false});
     }
@@ -37,7 +37,7 @@ export class UsernameForm extends React.Component {
             <FormControl type="text" onChange={this.handleInputChange} />
             {(!this.state.userName && !this.state.pristine) && <HelpBlock> Username can't be empty </HelpBlock>}
           </FormGroup>
-          <Button className="pull-right" bsStyle="primary" type="submit" value="Submit" disabled={this.state.userName && !this.state.pristine ? false : true}>
+          <Button className="pull-right" bsStyle="primary" type="submit" value="Submit" disabled={this.state.userName ? false : true}>
             {this.props.btnContext}
           </Button>
         </Form>
