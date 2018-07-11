@@ -21,8 +21,9 @@ export class UsernameInput extends React.Component {
     }
   };
 
-  handleSubmit = () => {
-    this.props.submit(this.state.userName);
+  handleSubmit = event => {
+    event.preventDefault();
+    this.props.onFormComplete(this.state.userName);
   }
 
   render() {
